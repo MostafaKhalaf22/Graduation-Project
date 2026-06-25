@@ -61,11 +61,7 @@ function RecenterAutomatically({ lat, lng }) {
   return null;
 }
 
-/* ─── Medical PDF Viewer ─────────────────────────────────────
-   الباكإند بيبعت path زي: /uploads/medical-pdfs/xxxx.pdf
-   بنبني الـ full URL من VITE_API_BASE_URL ونفتحه بـ window.open
-   عشان React Router ميحاولش يعمله route جوا التطبيق
-──────────────────────────────────────────────────────────── */
+
 const MedicalPdfButton = ({ pdfPath }) => {
   if (!pdfPath) return null;
 
@@ -158,7 +154,6 @@ const UnitDashboard = () => {
         const role = data.role || data.title || 'Response Unit';
         setUserData((prev) => ({ ...prev, name, role }));
       } catch {
-        // fallback
       }
     };
     loadProfileHeader();
@@ -703,7 +698,6 @@ const UnitDashboard = () => {
                             <span className="inline-flex items-center gap-1.5 bg-green-500/10 border border-green-500/20 text-green-400 text-[10px] px-3 py-1 rounded-full font-black uppercase w-fit">
                               ✓ Medical Info Available
                             </span>
-                            {/* ✅ window.open بدل <a href> عشان React Router ميعملش route غلط */}
                             <MedicalPdfButton pdfPath={selectedIncident.subject.medicalInfoPdfUrl} />
                           </div>
                         ) : (

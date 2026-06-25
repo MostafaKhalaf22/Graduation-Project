@@ -32,7 +32,6 @@ const ProfilePage = () => {
 
         const data = await getMyProfile();
         if (!data) return;
-        // نخليها مرنة: السيرفر ممكن يرجع firstName/lastName بدل fullName
         const fullName =
           data.fullName ||
           [data.firstName, data.lastName].filter(Boolean).join(' ') ||
@@ -46,18 +45,15 @@ const ProfilePage = () => {
           phone: data.phoneNumber || data.phone || prev.phone,
         }));
       } catch (e) {
-        // نخليها silent حالياً
       }
     };
     load();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleSave = async () => {
     try {
       setSaving(true);
-      // Swagger: PUT /api/Profile/Edit (EditMyProfileCommand)
-      // { id, firstName, lastName, email, phoneNumber }
+     
       const parts = String(profile.fullName || '').trim().split(/\s+/);
       const firstName = parts[0] || '';
       const lastName = parts.slice(1).join(' ');
@@ -180,7 +176,6 @@ const ProfilePage = () => {
   );
 };
 
-// مكونات فرعية لتنظيم الكود
 const InputGroup = ({ label, value, hint, onChange }) => (
   <div>
     <label className="block text-sm font-medium text-slate-300 mb-2">{label}</label>

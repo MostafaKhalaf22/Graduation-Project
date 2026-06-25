@@ -134,24 +134,19 @@ export default function BinHome() {
       return 0;
     });
 
-  // ✅ استخراج البيانات من الـ API بشكل صحيح
   const totalBins = stats?.totalBins ?? bins.length;
   const activeBins = stats?.activeBins ?? bins.filter(b => b.isOnline).length;
   const fullBinsCount = stats?.fullBins ?? bins.filter(b => b.fillLevel >= 85).length;
   const nearFullBins = stats?.nearFullBins ?? bins.filter(b => b.fillLevel >= 50 && b.fillLevel < 85).length;
   const emptyBins = stats?.emptyBins ?? bins.filter(b => b.fillLevel < 50).length;
   
-  // ✅ حساب System Health من نسبة الـ active bins
   const health = stats?.totalBins > 0 
     ? Math.round((stats.activeBins / stats.totalBins) * 100)
     : 98.4;
   
-  // ✅ حساب نسبة الـ recycled (من الـ empty bins اللي تمت معالجتها)
   const recycled = stats?.recycledToday ?? stats?.recycled ?? emptyBins;
   
-  // ✅ حساب الـ optimized route
-//   const optimized = stats?.routeName ?? stats?.optimizedRoute ?? 'Route Alpha';
-//   const routeSaving = stats?.timeSaving ?? stats?.routeSavingMins ?? '-12.5';
+
 
   return (
     <>
@@ -206,18 +201,9 @@ export default function BinHome() {
             {fullBinsCount > 0 && <p style={{ margin: '8px 0 0', fontSize: 11, color: '#ef4444', fontWeight: 700 }}>{fullBinsCount} need collection</p>}
           </div>
 
-          {/* Recycled */}
-          {/* <div style={{ background: '#fff', borderRadius: 20, padding: '24px', border: '1px solid #e2e8f0', boxShadow: '0 1px 4px rgba(0,0,0,0.04)' }}>
-            <Leaf size={22} color="#14e842" />
-            <p style={{ margin: '14px 0 4px', fontSize: 36, fontWeight: 900, letterSpacing: -1 }}>
-              {loading ? '—' : recycled}
-            </p>
-            <p style={{ margin: 0, fontSize: 11, fontWeight: 900, color: '#94a3b8', textTransform: 'uppercase', letterSpacing: 1.5 }}>Recycled Today</p>
-            {typeof recycled === 'number' && <p style={{ margin: '8px 0 0', fontSize: 11, color: '#14e842', fontWeight: 700 }}>bins collected</p>}
-          </div> */}
+      
 
-          {/* Route */}
-        
+         
         </div>
 
         {/* ── Nearest Bin CTA ── */}

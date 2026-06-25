@@ -5,7 +5,7 @@ import Swal from 'sweetalert2';
 import { ShieldCheck, LogIn, Loader2 } from 'lucide-react';
 
 const UnitSignIn = () => {
-  const [email, setEmail] = useState(''); // ده اللي اليوزر بيكتبه (الإيميل)
+  const [email, setEmail] = useState(''); 
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
@@ -15,21 +15,17 @@ const UnitSignIn = () => {
     setLoading(true);
 
     try {
-      // لا نمسح كل الـ localStorage عشان ما نطيحش بتوكن الأدمن
       localStorage.removeItem('unitToken');
       localStorage.removeItem('unitName');
       localStorage.removeItem('unitEmail');
 
-      // ✅ التعديل: استخدمنا userName زي كود الأدمن بالظبط
       const response = await axios.post('http://sm-api2.runasp.net/api/Auth/SignIn', {
         userName: email.trim(), 
         password: password.trim()
       });
 
-      // ✅ التأكد من النجاح (succeeded أو status 200)
       if (response.data.succeeded === true || response.status === 200) {
         const userData = response.data.data;
-        // السيرفر ممكن يرجع التوكن بأسماء مختلفة حسب التطبيق/الاصدار.
         const tokenRaw =
           userData?.accessToken ||
           userData?.token ||
@@ -59,9 +55,7 @@ const UnitSignIn = () => {
             color: '#fff'
           });
 
-          // التوجه للداشبورد
           navigate('/unit/dashboard'); 
-          // عمل ريفريش بسيط للتأكد من سحب البيانات الجديدة
           window.location.reload(); 
         } else {
           throw new Error("Token not found");

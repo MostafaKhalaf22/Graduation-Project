@@ -22,7 +22,7 @@ import UnitSettings from './DashboardUnit/UnitSettings/UnitSettings.jsx';
 import ProfilePage from './DashboardUnit/ProfilePage/ProfilePage.jsx';
 
 // Bin Imports
-import BinSignIn from './DashboardBin/BinSignIn/BinSignIn.jsx'; // ✅ تم إضافة الاستيراد
+import BinSignIn from './DashboardBin/BinSignIn/BinSignIn.jsx'; 
 import BinDashboard from './DashboardBin/BinDashboardView/BinDashboardView.jsx';
 import BinHome from './DashboardBin/BinDashboardView/BinHome/BinHome.jsx';
 import BinDetail from './DashboardBin/BinDetail Page/BinDetail.jsx';
@@ -36,7 +36,7 @@ import './App.css';
 /* ─── ProtectedBin: redirects to login if no binToken ─── */
 function ProtectedBin({ children }) {
   const token = localStorage.getItem('binToken');
-  if (!token) return <Navigate to="/bin/login" replace />; // ✅ تم التعديل: يوجه لـ /bin/login
+  if (!token) return <Navigate to="/bin/login" replace />; 
   return children;
 }
 
@@ -122,9 +122,9 @@ function App() {
 
   useEffect(() => {
     const isUnitLogin = window.location.pathname === '/unit/login';
-    const isBinLogin = window.location.pathname === '/bin/login'; // ✅ تم إضافة التحقق
+    const isBinLogin = window.location.pathname === '/bin/login'; 
     const isMainLogin = window.location.pathname === '/';
-    if (!isUnitLogin && !isBinLogin && !isMainLogin) fetchUnits(); // ✅ تم إضافة الشرط
+    if (!isUnitLogin && !isBinLogin && !isMainLogin) fetchUnits(); 
   }, []);
 
   const updateAdmin = (newData) => {
@@ -174,25 +174,24 @@ function App() {
         <Route path="/profile" element={<ProfileSetting admin={adminUser} onUpdate={updateAdmin} onRevoke={revokeSession} />} />
 
         {/* Unit */}
-        <Route path="/unit/login" element={<UnitSignIn />} /> {/* ✅ تم إزالة SmartAfterLogin */}
+        <Route path="/unit/login" element={<UnitSignIn />} /> 
         <Route path="/unit/dashboard" element={<ProtectedUnit><UnitDashboard /></ProtectedUnit>} />
         <Route path="/unit/incident-detail" element={<ProtectedUnit><UnitIncidentDetail /></ProtectedUnit>} />
         <Route path="/unit/incident-detail/:id" element={<ProtectedUnit><UnitIncidentDetail /></ProtectedUnit>} />
         <Route path="/unit/settings" element={<ProtectedUnit><UnitSettings /></ProtectedUnit>} />
         <Route path="/unit/profile" element={<ProfilePage />} />
 
-      {/* ✅ Bin Collector - صفحة تسجيل دخول منفصلة */}
 <Route path="/bin/login" element={<BinSignIn />} />
 
 {/* Bin Collector Dashboard */}
 <Route path="/bin" element={<ProtectedBin><BinLayout /></ProtectedBin>}>
-  <Route index element={<BinHome />} />  {/* ✅ مهم جداً */}
+  <Route index element={<BinHome />} />  
   <Route path="home" element={<BinHome />} />
   <Route path="map" element={<BinMap />} />
   <Route path="reports" element={<BinReports />} />
-    <Route path="profile" element={<BinProfile />} /> {/* ✅ ضيف السطر ده */}
+    <Route path="profile" element={<BinProfile />} /> 
 
-    <Route path="settings" element={<BinSettings />} /> {/* ✅ ضيف السطر ده */}
+    <Route path="settings" element={<BinSettings />} /> 
 
   <Route path="detail/:id" element={<BinDetail />} />
 </Route>

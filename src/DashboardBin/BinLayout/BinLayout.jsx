@@ -12,11 +12,10 @@ const NAV = [
 
 export default function BinLayout() {
   const navigate = useNavigate();
-  const location = useLocation(); // ✅ استخدام useLocation لتحديد الصفحة النشطة
+  const location = useLocation(); 
   const [userName, setUserName] = useState(localStorage.getItem('binName') || 'Collector');
   const [userInitial, setUserInitial] = useState('C');
 
-  // ✅ تحديد الصفحة النشطة من الـ URL
   const currentPage = NAV.find(n => location.pathname === n.path)?.id || 'home';
 
   useEffect(() => {
@@ -29,7 +28,7 @@ export default function BinLayout() {
 
   const handleLogout = () => {
     ['binToken', 'unitToken', 'binName', 'binEmail'].forEach(k => localStorage.removeItem(k));
-    navigate('/bin/login'); // ✅ تم التعديل: يوجه لـ /bin/login
+    navigate('/bin/login'); 
   };
 
   return (
@@ -120,7 +119,6 @@ export default function BinLayout() {
           </div>
         </header>
 
-        {/* ✅ استخدام Outlet بدل children */}
         <div style={{ flex: 1, padding: 32, maxWidth: 1400, width: '100%', margin: '0 auto', boxSizing: 'border-box' }}>
           <Outlet />
         </div>

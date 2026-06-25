@@ -8,7 +8,6 @@ import {
 const UnitSettings = () => {
   const navigate = useNavigate();
 
-  // مكون فرعي للـ Input المخصص في الصورة
   const SettingField = ({ label, helper, type = "text", defaultValue, isSelect = false }) => (
     <div className="bg-[#0f172a]/30 border border-slate-800/60 rounded-lg p-5 flex flex-col gap-2">
       <label className="text-[11px] font-bold text-slate-400 uppercase tracking-tight">{label}</label>

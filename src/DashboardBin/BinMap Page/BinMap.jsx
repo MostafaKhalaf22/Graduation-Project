@@ -22,47 +22,34 @@ function normalizeBin(raw) {
   const fill = Number(raw.fillLevel ?? raw.fillPercentage ?? raw.fullnessLevel ?? raw.level ?? 0);
   
   return {
-    // ID
     id: raw.id ?? raw.binId,
     
-    // Name - نستخدم deviceIdentifier لو name مش موجود
     name: raw.name ?? raw.binName ?? raw.title ?? raw.deviceIdentifier ?? `Bin #${raw.id}`,
     
-    // Address - نستخدم lat/lng لو address مش موجود
     address: raw.address ?? raw.location ?? raw.binLocation ?? `${lat.toFixed(4)}, ${lng.toFixed(4)}`,
     
-    // Fill Level
     fillLevel: Math.min(100, Math.max(0, Math.round(fill))),
     
-    // Capacity
     capacity: raw.capacity ?? raw.maxCapacity ?? 180,
     
-    // Status - نستخدم sensorStatus لو status مش موجود
     status: raw.status ?? raw.sensorStatus ?? (fill >= 85 ? 'Full' : fill >= 50 ? 'Medium' : 'Available'),
     
-    // Last Updated - نستخدم lastSeen لو lastUpdated مش موجود
     lastUpdated: raw.lastUpdated ?? raw.lastSeen ?? raw.updatedAt ?? null,
     
-    // Coordinates
     lat, 
     lng,
     
-    // Incident ID
     incidentId: raw.incidentId ?? null,
     
-    // Online Status - نستخدم isActive لو isOnline مش موجود
     isOnline: raw.isOnline ?? raw.isActive ?? raw.online ?? true,
     
-    // Distance (لو موجود من الـ API)
     distance: raw.distance ?? null,
     
-    // Sensor Status
     sensorStatus: raw.sensorStatus ?? null,
     
-    // Is Full
     isFull: raw.isFull ?? (fill >= 85),
     
-    // Is Near Full
+    // Is  Full
     isNearFull: raw.isNearFull ?? (fill >= 50 && fill < 85),
   };
 }
@@ -347,7 +334,6 @@ export default function BinMap() {
             </MapContainer>
           </div>
 
- {/* Selected Bin Panel - يظهر فوق الـ map */}
 {selected && (
   <div style={{ 
     position: 'absolute',

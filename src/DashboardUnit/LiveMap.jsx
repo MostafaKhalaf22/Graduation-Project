@@ -3,7 +3,6 @@ import { MapContainer, TileLayer, Marker, useMap } from 'react-leaflet';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 
-// تصليح أيقونة الماركر عشان تظهر في React
 delete L.Icon.Default.prototype._getIconUrl;
 L.Icon.Default.mergeOptions({
   iconRetinaUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon-2x.png',
@@ -11,24 +10,21 @@ L.Icon.Default.mergeOptions({
   shadowUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png',
 });
 
-// وظيفة بتخلي الخريطة تروح للمكان الجديد بسلاسة (Smooth Animation)
 function Recenter({ lat, lng }) {
   const map = useMap();
   useEffect(() => {
-    map.flyTo([lat, lng], 16); // رقم 16 ده قوة الزووم
+    map.flyTo([lat, lng], 16); 
   }, [lat, lng, map]);
   return null;
 }
 
 const LiveMap = () => {
-  // دي الإحداثيات الوهمية (بتبدأ مثلاً من الإسماعيلية)
   const [coords, setCoords] = useState({ lat: 30.5965, lng: 32.2715 });
 
-  // سيميوليشن: هنخلي النقطة تتحرك لوحدها كل 3 ثواني
   useEffect(() => {
     const interval = setInterval(() => {
       setCoords(prev => ({
-        lat: prev.lat + 0.0005, // حركة بسيطة جداً
+        lat: prev.lat + 0.0005, 
         lng: prev.lng + 0.0005
       }));
     }, 3000);

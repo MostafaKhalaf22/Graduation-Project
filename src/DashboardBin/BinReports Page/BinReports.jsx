@@ -79,12 +79,10 @@ export default function BinReports() {
   const onlineBins = bins.filter(b => b.isOnline);
   const avgFill = total > 0 ? Math.round(bins.reduce((s, b) => s + b.fillLevel, 0) / total) : 0;
 
-  // ✅ حساب Recycled Today
   const recycled = stats?.recycledToday 
     ?? stats?.recycled 
     ?? bins.filter(b => b.fillLevel < 20).length;
 
-  // ✅ حساب Collections
   const collections = stats?.collectionsToday 
     ?? stats?.totalCollections 
     ?? bins.filter(b => b.sensorStatus === 'Empty' || (b.isFull === false && b.fillLevel < 20)).length;
@@ -248,7 +246,6 @@ export default function BinReports() {
             )}
           </div>
 
-          {/* Sector Breakdown */}
         </div>
       </div>
 
