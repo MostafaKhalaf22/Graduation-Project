@@ -18,8 +18,7 @@ const BinSignIn = () => {
     try {
       localStorage.clear();
 
-      const response = await axios.post('/api/api/Auth/SignIn', {
-        userName: username.trim(), 
+const response = await axios.post('/api/Auth/SignIn', {        userName: username.trim(), 
         password: password.trim()
       });
 

@@ -14,8 +14,7 @@ const SignIn = () => {
     try {
       localStorage.clear();
 
-      const response = await axios.post('/api/api/Auth/SignIn', {
-        userName: email.trim(), 
+const response = await axios.post('/api/Auth/SignIn', {        userName: email.trim(), 
         password: password.trim()
       });
 
