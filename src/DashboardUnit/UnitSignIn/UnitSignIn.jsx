@@ -19,7 +19,7 @@ const UnitSignIn = () => {
       localStorage.removeItem('unitName');
       localStorage.removeItem('unitEmail');
 
-      const response = await axios.post('http://sm-api2.runasp.net/api/Auth/SignIn', {
+      const response = await axios.post('/api/api/Auth/SignIn', {
         userName: email.trim(), 
         password: password.trim()
       });

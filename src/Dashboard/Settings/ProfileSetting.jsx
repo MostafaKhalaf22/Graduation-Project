@@ -75,7 +75,7 @@ const ProfileSetting = ({ admin = {}, onUpdate }) => {
     };
 
     try {
-      const response = await fetch('http://sm-api2.runasp.net/api/Profile/Edit', {
+      const response = await fetch('/api/api/Profile/Edit', {
         method: 'PUT',
         headers: { 
           'Content-Type': 'application/json', 
@@ -113,7 +113,7 @@ const ProfileSetting = ({ admin = {}, onUpdate }) => {
     }
     setIsChangingPassword(true);
     try {
-        const response = await fetch(`http://sm-api2.runasp.net/api/AppUser/ChangePassword?id=${userId}`, {
+        const response = await fetch(`/api/api/AppUser/ChangePassword?id=${userId}`, {
             method: 'PUT',
             headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` },
             body: JSON.stringify({

@@ -9,7 +9,7 @@ import { getMyAssignments, getMyProfile } from '../../api/unitApi';
 
 // ─── Helpers ────────────────────────────────────────────────────────────────
 
-const API_BASE_URL = 'http://sm-api2.runasp.net';
+const API_BASE_URL = '/api';
 
 function isImageUrl(url) {
   if (!url) return false;

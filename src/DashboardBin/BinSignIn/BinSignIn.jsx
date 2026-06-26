@@ -18,7 +18,7 @@ const BinSignIn = () => {
     try {
       localStorage.clear();
 
-      const response = await axios.post('http://sm-api2.runasp.net/api/Auth/SignIn', {
+      const response = await axios.post('/api/api/Auth/SignIn', {
         userName: username.trim(), 
         password: password.trim()
       });

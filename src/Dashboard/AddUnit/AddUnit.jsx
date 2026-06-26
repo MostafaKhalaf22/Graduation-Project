@@ -72,8 +72,8 @@ const AddUnit = ({ onAdd }) => {
       return;
     }
 
-    const CREATE_URL = 'http://sm-api2.runasp.net/api/admin/response-units/create';
-    const UPDATE_URL = 'http://sm-api2.runasp.net/api/admin/response-units/update';
+    const CREATE_URL = '/api/api/admin/response-units/create';
+    const UPDATE_URL = '/api/api/admin/response-units/update';
 
     const config = {
       headers: { 

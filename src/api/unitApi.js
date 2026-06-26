@@ -1,7 +1,6 @@
 import axios from 'axios';
 
-const API_BASE_URL = 'http://sm-api2.runasp.net';
-
+const API_BASE_URL = '/api';
 function getUnitToken() {
   return (
     localStorage.getItem('unitToken') ||

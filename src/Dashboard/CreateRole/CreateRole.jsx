@@ -14,7 +14,7 @@ const CreateRole = ({ onSuccess }) => {
     formData.append('roleName', roleTitle); 
 
     try {
-      await axios.post('http://sm-api2.runasp.net/api/Role/Add', formData, {
+      await axios.post('/api/api/Role/Add', formData, {
         headers: { 
           'Authorization': `Bearer ${token}`,
         }
