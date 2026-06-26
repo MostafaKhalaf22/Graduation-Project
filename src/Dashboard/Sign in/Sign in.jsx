@@ -14,9 +14,10 @@ const SignIn = () => {
     try {
       localStorage.clear();
 
-const response = await axios.post('/api/Auth/SignIn', {        userName: email.trim(), 
-        password: password.trim()
-      });
+const response = await axios.post('https://sm-api2.runasp.net/api/Auth/SignIn', {
+  userName: email.trim(),
+  password: password.trim()
+});
 
       if (response.data.succeeded === true || response.status === 200) {
         const userData = response.data.data;
