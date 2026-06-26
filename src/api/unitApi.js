@@ -157,16 +157,16 @@ export async function completeAssignment({ incidentId, userId, notes } = {}) {
 }
 
 export async function getMyProfile() {
-  const res = await client.get('/api/Profile');
+  const res = await client.get('/Profile');
   return normalizeObject(res.data);
 }
 
 export async function editMyProfile(payload) {
-  const res = await client.put('/api/Profile/Edit', payload);
+  const res = await client.put('/Profile/Edit', payload);
   return res.data;
 }
 
 export async function changeMyPassword(payload) {
-  const res = await client.put('/api/Profile/ChangePassword', payload);
+  const res = await client.put('/Profile/ChangePassword', payload);
   return res.data;
 }

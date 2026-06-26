@@ -75,7 +75,7 @@ const ProfileSetting = ({ admin = {}, onUpdate }) => {
     };
 
     try {
-      const response = await fetch('/api/Profile/Edit', {
+      const response = await fetch('/Profile/Edit', {
         method: 'PUT',
         headers: { 
           'Content-Type': 'application/json', 
