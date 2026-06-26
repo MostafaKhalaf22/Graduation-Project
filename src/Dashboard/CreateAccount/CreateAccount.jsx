@@ -20,7 +20,7 @@ const CreateAccount = ({ onClose }) => {
     const fetchRoles = async () => {
       try {
         const token = localStorage.getItem('adminToken');
-        const response = await axios.get('/api/api/Role/GetAll', {
+        const response = await axios.get('/api/Role/GetAll', {
           headers: { 'Authorization': `Bearer ${token}` }
         });
         const rolesData = response.data.data || response.data;
@@ -52,7 +52,7 @@ const CreateAccount = ({ onClose }) => {
       const firstName = nameParts[0];
       const lastName = nameParts.length > 1 ? nameParts.slice(1).join(' ') : 'Admin';
 
-      const response = await axios.post('/api/api/AppUser/Create', {
+      const response = await axios.post('/api/AppUser/Create', {
         FirstName: firstName,
         LastName: lastName,
         Email: formData.email,

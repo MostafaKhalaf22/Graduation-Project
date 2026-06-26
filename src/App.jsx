@@ -106,7 +106,7 @@ function App() {
       setLoadingUnits(true);
       for (let attempt = 0; attempt < 2; attempt++) {
         if (attempt > 0) await new Promise((r) => setTimeout(r, 800));
-        const response = await axios.get('/api/api/admin/response-units/List', {
+        const response = await axios.get('/api/admin/response-units/List', {
           headers: { Authorization: `Bearer ${token}`, Accept: '*/*', 'Cache-Control': 'no-cache, no-store, must-revalidate', Pragma: 'no-cache' },
           params: { _t: Date.now() },
         });
@@ -146,11 +146,11 @@ function App() {
     const result = await Swal.fire({ title: 'هل أنت متأكد؟', text: `سيتم حذف ${targetUnit?.name || 'الوحدة'} نهائياً!`, icon: 'warning', showCancelButton: true, confirmButtonColor: '#d33', confirmButtonText: 'نعم، احذف!', cancelButtonText: 'إلغاء' });
     if (!result.isConfirmed) return;
     try {
-      const response = await axios.delete(`/api/api/admin/response-units/Delete/${id}`, { headers: { Authorization: `Bearer ${token}` } });
+      const response = await axios.delete(`/api/admin/response-units/Delete/${id}`, { headers: { Authorization: `Bearer ${token}` } });
       if (response.data.succeeded || response.status === 200) { setUnits((prev) => prev.filter((u) => u.id !== id)); Swal.fire('تم الحذف!', 'تمت إزالة الوحدة من النظام.', 'success'); return; }
     } catch {}
     try {
-      await axios.delete(`/api/api/AppUser/Delete/${id}`, { headers: { Authorization: `Bearer ${token}` } });
+      await axios.delete(`/api/AppUser/Delete/${id}`, { headers: { Authorization: `Bearer ${token}` } });
       setUnits((prev) => prev.filter((u) => u.id !== id));
       Swal.fire('تم الحذف!', 'تمت إزالة السجل بنجاح.', 'success');
     } catch (error) {

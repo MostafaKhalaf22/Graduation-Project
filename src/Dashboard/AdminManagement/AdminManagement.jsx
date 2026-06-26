@@ -31,7 +31,7 @@ const AdminManagement = () => {
   const fetchRoles = async () => {
     try {
       setLoading(true);
-      const response = await axios.get('/api/api/Role/GetAll', {
+      const response = await axios.get('/api/Role/GetAll', {
         headers: token ? { 'Authorization': `Bearer ${token}` } : {}
       });
       const data = response.data.data || response.data; 
@@ -74,7 +74,7 @@ const AdminManagement = () => {
     });
     if (result.isConfirmed) {
       try {
-        await axios.delete(`/api/api/Role/Delete/${id}`, {
+        await axios.delete(`/api/Role/Delete/${id}`, {
           headers: { 'Authorization': `Bearer ${token}` }
         });
         Swal.fire('تم!', 'تم حذف الدور بنجاح.', 'success');
@@ -97,7 +97,7 @@ const AdminManagement = () => {
     });
     if (newName) {
       try {
-        await axios.put(`/api/api/Role/Edit`, {
+        await axios.put(`/api/Role/Edit`, {
           id: role.id,
           newRoleName: newName 
         }, {
